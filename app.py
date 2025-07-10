@@ -59,20 +59,17 @@ def load_user(user_id):
 # ─── Helpers Jinja ─────────────────────────────────────
 @app.context_processor
 def inject_testimonios():
-    return {
-        'fetch_testimonios': lambda: Testimonio.query
-                                       .filter_by(visible=True)
-                                       .order_by(Testimonio.id.desc())
-                                       .all()
-    }
-
-# ⬇️  NUEVO
-@app.context_processor
-def inject_now():
-    """Disponibiliza now() en todas las plantillas."""
+    """Expone fetch_testimonios() + now() en todas las plantillas."""
     from datetime import datetime
-    return {'now': datetime.utcnow}
-
+    return {
+        # lista de testimonios visibles (lambda para que se ejecute cada vez)
+        'fetch_testimonios': lambda: Testimonio.query
+                                         .filter_by(visible=True)
+                                         .order_by(Testimonio.id.desc())
+                                         .all(),
+        # año/fecha actual
+        'now': datetime.utcnow
+    }
 
 # ───────── Rutas públicas ──────────────────────────────────────
 @app.route("/")
