@@ -21,8 +21,7 @@ from models import (
 from forms import (
     HomeContentForm, InscripcionForm, GaleriaForm, ProgramaForm,
     LoginForm, ResetRequestForm, ResetPasswordForm, RestoreForm,
-    PublicRegisterForm,          # ← AÑADE ESTA LÍNEA
-    AdminUserForm                # ← Y ESTA (si usarás alta de usuarios en admin)
+    PublicRegisterForm, AdminUserForm
 )
 
 import zipfile, shutil, datetime as dt
