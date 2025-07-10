@@ -56,11 +56,23 @@ login_manager.login_message = None
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-# Helpers Jinja
+# ─── Helpers Jinja ─────────────────────────────────────
 @app.context_processor
 def inject_testimonios():
-    return dict(fetch_testimonios=lambda:
-        Testimonio.query.filter_by(visible=True).order_by(Testimonio.id.desc()).all())
+    return {
+        'fetch_testimonios': lambda: Testimonio.query
+                                       .filter_by(visible=True)
+                                       .order_by(Testimonio.id.desc())
+                                       .all()
+    }
+
+# ⬇️  NUEVO
+@app.context_processor
+def inject_now():
+    """Disponibiliza now() en todas las plantillas."""
+    from datetime import datetime
+    return {'now': datetime.utcnow}
+
 
 # ───────── Rutas públicas ──────────────────────────────────────
 @app.route("/")
