@@ -126,12 +126,13 @@ def register():
     if current_user.is_authenticated:
         return redirect(url_for("dashboard"))
 
-    form = RegisterForm()
+    form = PublicRegisterForm()           # usa el formulario sin campo rol
     if form.validate_on_submit():
+        # ¿correo repetido?
         if User.query.filter_by(email=form.email.data).first():
             flash("Ese correo ya existe.", "warning")
         else:
-            user = User(email=form.email.data, role="student")   # rol por defecto
+            user = User(email=form.email.data, role="student")
             user.set_password(form.password.data)
             db.session.add(user)
             db.session.commit()
@@ -139,6 +140,26 @@ def register():
             return redirect(url_for("login"))
 
     return render_template("register.html", form=form)
+
+
+# ---------- Alta de usuarios (admin) ----------
+@app.route("/admin/usuarios/nuevo", methods=["GET", "POST"])
+@login_required
+def admin_nuevo_usuario():
+    if current_user.role != "admin":
+        return redirect(url_for("dashboard"))
+
+    form = AdminUserForm()
+    if form.validate_on_submit():
+        if User.query.filter_by(email=form.email.data).first():
+            flash("Ese correo ya existe.", "warning")
+        else:
+            u = User(email=form.email.data, role=form.role.data)
+            u.set_password(form.password.data)
+            db.session.add(u); db.session.commit()
+            flash("Usuario creado ✔", "success")
+            return redirect(url_for("admin_nuevo_usuario"))
+    return render_template("admin/nuevo_usuario.html", form=form)
 
 
 # ---------- Password reset ----------
