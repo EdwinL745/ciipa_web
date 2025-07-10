@@ -17,10 +17,12 @@ from models import (
     db, HomeContent, Programa, Galeria,
     Testimonio, User, Inscripcion
 )
+# ─── al principio de app.py ─────────────────────────
 from forms import (
     HomeContentForm, InscripcionForm, GaleriaForm, ProgramaForm,
     LoginForm, ResetRequestForm, ResetPasswordForm, RestoreForm,
-    PublicRegisterForm, AdminUserForm          # ← IMPORTADOS
+    PublicRegisterForm,          # ← AÑADE ESTA LÍNEA
+    AdminUserForm                # ← Y ESTA (si usarás alta de usuarios en admin)
 )
 
 import zipfile, shutil, datetime as dt
