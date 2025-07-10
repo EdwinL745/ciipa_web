@@ -1,0 +1,144 @@
+/***************************************************
+  BASE
+***************************************************/
+body{
+  background:#f8fafc;          /* color de fondo */
+}
+/* Scroll suave (solo aquí) */
+html{
+  scroll-behavior:smooth;
+}
+
+/***************************************************
+  TÍTULOS, NAVBAR, ANIMACIÓN
+***************************************************/
+h1{color:#004aad;}
+h2{color:#0d6efd;}
+.navbar{
+  box-shadow:0 2px 4px rgba(0,0,0,.1);
+}
+
+/* animación genérica */
+.animated{animation:fadeInDown 1s;}
+@keyframes fadeInDown{
+  from{opacity:0;transform:translateY(-20px);}
+  to  {opacity:1;transform:none;}
+}
+
+/***************************************************
+  AJUSTES CIIPA
+***************************************************/
+section{padding:5rem 0;}      /* espaciado uniforme */
+.card-title{font-weight:600;}
+.bg-light{background:#f8f9fa!important;}
+
+/***************************************************
+  HERO video
+***************************************************/
+.hero-video{
+  height:70vh;                /* 70 % de viewport */
+  min-height:320px;
+  overflow:hidden;
+  position:relative;
+}
+.hero-video video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+/* Móviles: oculta video y usa fondo sólido */
+@media(max-width:768px){
+  .hero-video video{display:none;}
+  .hero-video{background:#004aad;}
+}
+
+/***************************************************
+  STRIP DE LOGOS (fade-up)
+***************************************************/
+[data-logo]{
+  opacity:0;
+  transform:translateY(15px);
+  animation:logoFade .6s forwards;
+}
+[data-logo]:nth-child(2){animation-delay:.1s;}
+[data-logo]:nth-child(3){animation-delay:.2s;}
+@keyframes logoFade{to{opacity:1;transform:none;}}
+
+/***************************************************
+  GALERÍA CIIPA
+***************************************************/
+.gallery-item{
+  position:relative;
+  transition:transform .3s;
+}
+.gallery-item:hover{transform:scale(1.03);}  /* pequeño zoom */
+
+.gallery-item img{
+  width:100%;
+  height:260px;           /* alto fijo (escritorio) */
+  object-fit:cover;
+}
+/* Teléfonos ≤ 576 px: algo más bajo */
+@media(max-width:575.98px){
+  .gallery-ciipa .gallery-item img{height:200px;}
+}
+
+/* Contenedor opcional con alto fijo */
+.galeria-frame{height:260px;}
+@media(max-width:575.98px){.galeria-frame{height:180px;}}
+
+/***************************************************
+  LOGO CIIPA (navbar)
+***************************************************/
+.navbar-brand{
+  font-size:2rem;             /* texto o <img> mayor */
+  font-weight:700;
+  padding-top:.25rem;         /* ↓ reduce altura del “cuadro” */
+  padding-bottom:.25rem;
+  line-height:1;
+}
+/* Si usas <img> dentro del brand */
+.navbar-brand img{
+  height:48px;                /* antes 32-40 px → ahora 48 */
+  object-fit:contain;
+}
+
+/***************************************************
+  TESTIMONIOS – flechas negras mejor ubicadas
+***************************************************/
+#carouselTesti .carousel-control-prev,
+#carouselTesti .carousel-control-next{
+  width:40px;
+  height:40px;
+  top:50%;                         /* centrado vertical */
+  transform:translateY(-50%);
+  opacity:.9;
+}
+
+/* Icono negro: invertimos el blanco por defecto de Bootstrap */
+#carouselTesti .carousel-control-prev-icon,
+#carouselTesti .carousel-control-next-icon{
+  filter:brightness(0) invert(0);  /* → negro sólido */
+}
+
+/* posición horizontal */
+#carouselTesti .carousel-control-prev{ left:-60px;  }
+#carouselTesti .carousel-control-next{ right:-60px; }
+
+@media (max-width:576px){          /* móviles: flechas un poco más adentro */
+  #carouselTesti .carousel-control-prev{ left:-30px; }
+  #carouselTesti .carousel-control-next{ right:-30px;}
+}
+/***************************************************
+  GALERÍA – hover + cursor + sombreado
+***************************************************/
+.gallery-item{
+  position: relative;
+  overflow: hidden;                 /* recorta exceso de img */
+  cursor: pointer;                  /* mano al pasar */
+  transition: transform .3s, box-shadow .3s;
+}
+.gallery-item:hover{
+  transform: scale(1.05);          /* zoom un poco mayor */
+  box-shadow: 0 8px 16px rgba(0,0,0,.25);
+}

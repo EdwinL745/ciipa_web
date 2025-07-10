@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Programas – Admin</h2>
+
+<form method="post" enctype="multipart/form-data" class="border p-3 mb-4">
+  {{ form.hidden_tag() }}
+  <div class="row g-3">
+    <div class="col-md-3">{{ form.nombre.label }}{{ form.nombre(class="form-control") }}</div>
+    <div class="col-md-2">{{ form.tipo.label }}{{ form.tipo(class="form-select") }}</div>
+    <div class="col-md-2">{{ form.duracion.label }}{{ form.duracion(class="form-control") }}</div>
+    <div class="col-md-2">{{ form.precio.label }}{{ form.precio(class="form-control") }}</div>
+    <div class="col-md-3">{{ form.imagen.label }}{{ form.imagen(class="form-control") }}</div>
+    <div class="col-12">{{ form.visible() }} Visible</div>
+    <div class="col-12">{{ form.submit(class="btn btn-primary") }}</div>
+  </div>
+</form>
+
+<table class="table table-sm align-middle">
+  <thead class="table-light"><tr><th>ID</th><th>Nombre</th><th>Tipo</th><th>Duración</th><th>Precio</th><th>Imagen</th></tr></thead>
+  <tbody>
+    {% for p in progs %}
+      <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.nombre }}</td>
+        <td>{{ p.tipo }}</td>
+        <td>{{ p.duracion }}</td>
+        <td>{{ p.precio }}</td>
+        <td>{% if p.imagen %}<img src="{{ url_for('static', filename=p.imagen) }}" width="45">{% endif %}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

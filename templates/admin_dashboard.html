@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+{% block title %}Panel de Admin{% endblock %}
+
+{% block content %}
+<h1>Panel de Administración</h1>
+
+<ul class="list-group">
+
+  <!-- 1) Alumnos -->
+  <li class="list-group-item">
+    <a href="{{ url_for('admin_alumnos') }}" class="d-flex align-items-center text-decoration-none">
+      <span class="me-2" aria-hidden="true">🧑‍🎓</span>
+      <span>Ver alumnos registrados</span>
+    </a>
+  </li>
+
+  <!-- 2) Inscripciones -->
+  <li class="list-group-item">
+    <a href="{{ url_for('admin_inscripciones') }}" class="d-flex align-items-center text-decoration-none">
+      <span class="me-2" aria-hidden="true">📝</span>
+      <span>Ver inscripciones</span>
+    </a>
+  </li>
+
+  <!-- 3) Galería -->
+  <li class="list-group-item">
+    <a href="{{ url_for('admin_galeria') }}" class="d-flex align-items-center text-decoration-none">
+      <span class="me-2" aria-hidden="true">🖼️</span>
+      <span>Gestionar galería</span>
+    </a>
+  </li>
+
+  <!-- 4) Programas -->
+  <li class="list-group-item">
+    <a href="{{ url_for('admin_programas') }}" class="d-flex align-items-center text-decoration-none">
+      <span class="me-2" aria-hidden="true">📚</span>
+      <span>Gestionar programas</span>
+    </a>
+  </li>
+
+  <!-- 5) Descargar respaldo -->
+  <li class="list-group-item">
+    <a href="{{ url_for('admin_backup') }}" class="d-flex align-items-center text-decoration-none">
+      <span class="me-2" aria-hidden="true">⬇️</span>
+      <span>Descargar respaldo</span>
+    </a>
+  </li>
+
+  <!-- 6) Restaurar backup -->
+  <li class="list-group-item">
+    <a href="{{ url_for('admin_restore') }}" class="d-flex align-items-center text-decoration-none text-danger">
+      <span class="me-2" aria-hidden="true">♻️</span>
+      <span>Restaurar backup</span>
+    </a>
+  </li>
+
+</ul>
+{% endblock %}

@@ -1,0 +1,41 @@
+<!-- Modal – Nuevo testimonio -->
+<div class="modal fade" id="modalTesti" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <form class="modal-content" method="post" action="/nuevo_testimonio">
+      <div class="modal-header">
+        <h5 class="modal-title">Tu testimonio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                aria-label="Cerrar"></button>
+      </div>
+
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">Nombre</label>
+          <input name="nombre" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Año</label>
+          <input name="anio" type="number" min="2020" max="2100"
+                 class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Frase</label>
+          <textarea name="frase" class="form-control" rows="3" required></textarea>
+        </div>
+      </div>
+
+      <!-- Botones apilados y centrados -->
+      <div class="modal-footer d-grid gap-2">
+        <button type="button" class="btn btn-secondary"
+                data-bs-dismiss="modal">
+          Cancelar
+        </button>
+        <button type="submit" class="btn btn-primary">
+          Enviar testimonio
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

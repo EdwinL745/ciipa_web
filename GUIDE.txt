@@ -1,0 +1,52 @@
+CIIPA ACADEMIA - GUIA RAPIDA (Windows 11)
+
+1. Instalar Python 3.10+
+   - https://www.python.org/downloads/
+   - Marcar "Add Python to PATH" durante la instalación.
+
+2. Extraer la carpeta 'ciipa_web' del archivo ZIP en una ubicación fácil (p.e. Escritorio).
+
+3. Abrir PowerShell:
+   - Presiona Win, escribe 'powershell', clic derecho 'Ejecutar como administrador'.
+
+4. Navegar a la carpeta:
+   cd Desktop\ciipa_web   (ajusta la ruta si la extractaste en otro lugar)
+
+5. Crear entorno virtual (opcional pero recomendado):
+   python -m venv venv
+   .\venv\Scripts\Activate
+
+6. Instalar dependencias:
+   pip install -r requirements.txt
+
+7. Ejecutar la aplicación:
+   python app.py
+
+   - Se creará una base de datos local 'ciipa.db'
+   - Usuario admin demo: admin@ciipa.com / Admin123
+   - Se mostrará en consola un código 2FA (simulado). Copia ese código para completar la verificación.
+
+8. Abre tu navegador en:
+   http://127.0.0.1:5000
+
+9. Probar:
+   - Iniciar con admin demo → ingresar código 2FA
+   - Explorar panel de admin
+   - Registro como alumno → panel alumno
+   - Ver mensajes, testimonios, etc.
+
+10. Copia de seguridad:
+   - Copia los archivos:
+       * carpeta ciipa_web (código, static, templates)
+       * archivo ciipa.db (base de datos)
+   - Puedes comprimirlos en un ZIP como respaldo.
+   - Para restaurar: extrae en una carpeta y asegúrate de tener Python + dependencias.
+
+11. Publicar grátis en Render.com (resumen):
+   - Crear cuenta y conectar GitHub.
+   - Subir este proyecto a un repo.
+   - Crear 'Web Service' → Build Command: pip install -r requirements.txt
+     Start Command: python app.py
+   - Render te dará un link https://tu-app.onrender.com
+
+¡Listo!

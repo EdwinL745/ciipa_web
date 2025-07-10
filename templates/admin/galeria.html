@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>Galería – Admin</h2>
+
+<form method="post" enctype="multipart/form-data" class="border p-3 mb-4">
+  {{ form.hidden_tag() }}
+  <div class="row g-3">
+    <div class="col-md-5">{{ form.imagen.label }}{{ form.imagen(class="form-control") }}</div>
+    <div class="col-md-2 d-flex align-items-end">{{ form.visible() }} Visible</div>
+    <div class="col-md-2 d-flex align-items-end">{{ form.submit(class="btn btn-primary") }}</div>
+  </div>
+</form>
+
+<div class="row g-3">
+  {% for f in fotos %}
+  <div class="col-6 col-md-3">
+    <img src="{{ url_for('static', filename=f.filename) }}" class="img-fluid rounded">
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

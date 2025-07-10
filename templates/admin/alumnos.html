@@ -1,0 +1,32 @@
+{% extends 'admin_dashboard.html' %}
+
+{% block content %}
+<h2>Listado de alumnos</h2>
+
+<table class="table table-striped mt-3">
+  <thead>
+
+    <tr>
+      <th>ID</th>
+      <th>Correo</th>
+      <th>Registrado en</th>           {# ← Nueva cabecera #}
+    </tr>
+  </thead>
+  <tbody>
+    {% for id, email, created_at in alumnos %}
+    <tr>
+      <td>{{ id }}</td>
+      <td>{{ email }}</td>
+      <td>{{ created_at }}</td>
+      
+    </tr>
+    {% else %}
+    <tr>
+      <td colspan="3" class="text-center">No hay alumnos registrados.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<a href="{{ url_for('dashboard') }}" class="btn btn-secondary">← Volver al panel</a>
+{% endblock %}

@@ -1,0 +1,186 @@
+{% extends "layout.html" %}
+
+{% block title %}Inicio · CIIPA{% endblock %}
+
+{% block content %}
+
+<!-- HERO con video ---------------------------------------------------- -->
+<section class="hero-video position-relative">
+  <video class="w-100 h-100 position-absolute top-0 start-0 object-fit-cover"
+         autoplay muted loop playsinline>
+    <source src="{{ url_for('static', filename='video/hero-ciipa.mp4') }}"
+            type="video/mp4">
+  </video>
+
+  <!-- Capa oscura para contraste -->
+  <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50"></div>
+
+  <div class="container position-relative z-1 text-center text-white py-5">
+    <h1 class="display-4 fw-bold">Impulsa tu futuro</h1>
+    <p class="lead mb-4">
+      Informática · Inglés · Certificaciones válidas en todo México
+    </p>
+    <a href="#programas" class="btn btn-primary btn-lg">Ver programas</a>
+  </div>
+</section>
+
+<!-- VENTAJAS ---------------------------------------------------------- -->
+<section class="py-5">
+  <div class="container">
+    <div class="row g-4 text-center">
+
+      <div class="col-md-3">
+        <i class="bi bi-laptop fs-1 text-primary"></i>
+        <h5 class="mt-3">100&nbsp;% práctico</h5>
+        <p class="small text-muted">Proyectos reales desde el primer día.</p>
+      </div>
+
+      <div class="col-md-3">
+        <i class="bi bi-award fs-1 text-primary"></i>
+        <h5 class="mt-3">Certificaciones</h5>
+        <p class="small text-muted">
+          Avalado por la Secretaría de Educación&nbsp;Pública.
+        </p>
+      </div>
+
+      <div class="col-md-3">
+        <i class="bi bi-globe2 fs-1 text-primary"></i>
+        <h5 class="mt-3">Inglés&nbsp;+&nbsp;TIC</h5>
+        <p class="small text-muted">Domina el idioma y la tecnología.</p>
+      </div>
+
+      <div class="col-md-3">
+        <i class="bi bi-people fs-1 text-primary"></i>
+        <h5 class="mt-3">Mentores expertos</h5>
+        <p class="small text-muted">Docentes activos en la industria.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMAS --------------------------------------------------------- -->
+<section id="programas" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">Nuestros programas</h2>
+    <div class="row g-4">
+      {% include 'partials/card_programa.html' with context %}
+    </div>
+  </div>
+</section>
+
+<!-- GALERÍA ----------------------------------------------------------- -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Vida en CIIPA</h2>
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      {% for i in range(1, 7) %}
+        <div class="col">
+          <!-- se añadió gallery-item -->
+          <div class="galeria-frame rounded shadow-sm overflow-hidden gallery-item">
+            <img src="{{ url_for('static', filename='img/galeria' ~ i ~ '.jpg') }}"
+                 class="w-100 h-100 object-fit-cover"
+                 alt="Galería CIIPA {{ i }}">
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS ------------------------------------------------------- -->
+<section id="testimonios" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-4">Testimonios</h2>
+
+    <div class="position-relative" style="max-width:680px;margin:auto;">
+      <div id="carouselTesti" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner text-center">
+          <div class="carousel-item active">
+            <blockquote class="blockquote">
+              <p class="mb-3">“Gracias a CIIPA obtuve mi primer empleo en soporte técnico.”</p>
+              <footer class="blockquote-footer text-muted">María Gómez · 2024</footer>
+            </blockquote>
+          </div>
+          <div class="carousel-item">
+            <blockquote class="blockquote">
+              <p class="mb-3">“La combinación de inglés y TIC me abrió las puertas de una empresa global.”</p>
+              <footer class="blockquote-footer text-muted">Luis Pérez · 2023</footer>
+            </blockquote>
+          </div>
+        </div>
+
+        <!-- Flechas -->
+        <button class="carousel-control-prev" type="button"
+                data-bs-target="#carouselTesti" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button"
+                data-bs-target="#carouselTesti" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+
+      <!-- Botón modal -->
+      <div class="text-center mt-3">
+        <button class="btn btn-outline-primary"
+                data-bs-toggle="modal" data-bs-target="#modalTesti">
+          Comparte tu experiencia
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include 'partials/modal_testi.html' %}
+
+<!-- STRIP DE LOGOS ---------------------------------------------------- -->
+<section class="py-4 bg-white border-top border-bottom">
+  <div class="container d-flex flex-wrap justify-content-center gap-4">
+    <img src="{{ url_for('static', filename='img/microsoft.svg') }}" data-logo height="40" alt="Microsoft">
+    <img src="{{ url_for('static', filename='img/sep.svg') }}"        data-logo height="40" alt="SEP">
+    <img src="{{ url_for('static', filename='img/adobe.svg') }}"      data-logo height="40" alt="Adobe">
+  </div>
+</section>
+
+<!-- CTA FINAL --------------------------------------------------------- -->
+<section class="py-5 text-white" style="background:#004aad">
+  <div class="container text-center">
+    <h3 class="mb-3">Construye tu futuro con CIIPA</h3>
+    <p class="lead mb-4">Inscripciones abiertas — ¡cupos limitados!</p>
+    <a href="{{ url_for('inscribirme') }}" class="btn btn-light btn-lg">
+      Inscríbete ahora
+    </a>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block scripts %}
+<!-- Lightbox para galería -->
+<script>
+document.querySelectorAll('.gallery-item img').forEach(img=>{
+  img.addEventListener('click', ()=>{
+    /* 1) modal dinámico */
+    const html = `
+      <div class="modal fade" id="imgModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <div class="modal-content bg-transparent border-0">
+            <img src="${img.src}" class="w-100 rounded">
+          </div>
+        </div>
+      </div>`;
+    document.body.insertAdjacentHTML('beforeend', html);
+
+    /* 2) mostrar modal */
+    const modal = new bootstrap.Modal('#imgModal');
+    modal.show();
+
+    /* 3) eliminar modal al cerrarse */
+    document.getElementById('imgModal')
+            .addEventListener('hidden.bs.modal', e=>e.target.remove());
+  });
+});
+</script>
+{% endblock %}

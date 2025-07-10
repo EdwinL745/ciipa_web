@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block title %}Panel Alumno{% endblock %}
+{% block content %}
+<h2>Panel del Alumno</h2>
+<p>Hola {{ current_user.email }}. Aquí podrás:</p>
+<ul>
+  <li>Descargar material del curso</li>
+  <li>Agendar una cita</li>
+  <li>Ver tus inscripciones</li>
+</ul>
+{% endblock %}

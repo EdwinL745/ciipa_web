@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block title %}Registrarse{% endblock %}
+{% block content %}
+<h2>Crear Cuenta</h2>
+<form method="post" class="row g-3">
+  <div class="col-12">
+    <label class="form-label">Correo</label>
+    <input type="email" name="email" class="form-control" required>
+  </div>
+  <div class="col-12">
+    <label class="form-label">Contraseña</label>
+    <input type="password" name="password" class="form-control" required>
+  </div>
+  <div class="col-12">
+    <label class="form-label">Rol</label>
+    <select name="role" class="form-select">
+      <option value="alumno">Alumno</option>
+      <option value="admin">Administrador</option>
+    </select>
+  </div>
+  <div class="col-12">
+    <label class="form-label">Reseña (para 2FA)</label>
+    <input type="text" name="reseña" class="form-control">
+  </div>
+  <div class="col-12">
+    <button class="btn btn-success">Registrarse</button>
+  </div>
+</form>
+{% endblock %}

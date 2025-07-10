@@ -1,0 +1,25 @@
+{% extends 'admin_dashboard.html' %}
+
+{% block content %}
+<h2>Editar portada</h2>
+<form method="POST" enctype="multipart/form-data">
+  {{ form.hidden_tag() }}
+
+  <div class="mb-3">
+    {{ form.titulo.label(class="form-label") }}
+    {{ form.titulo(class="form-control") }}
+  </div>
+
+  <div class="mb-3">
+    {{ form.subtitulo.label(class="form-label") }}
+    {{ form.subtitulo(class="form-control") }}
+  </div>
+
+  <div class="mb-3">
+    {{ form.imagen.label(class="form-label") }}
+    {{ form.imagen(class="form-control") }}
+  </div>
+
+  {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block title %}Verificación 2FA{% endblock %}
+{% block content %}
+<h2>Verificación de Administrador</h2>
+<p>Introduce el código que se envió a tu correo (simulado en consola).</p>
+<form method="post" class="row g-3">
+  <div class="col-12">
+    <input type="text" name="code" class="form-control" placeholder="Código de 6 dígitos" required>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary">Validar</button>
+  </div>
+</form>
+{% endblock %}

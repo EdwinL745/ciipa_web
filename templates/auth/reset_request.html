@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3>Restablecer contraseña</h3>
+<form method="POST">
+  {{ form.hidden_tag() }}
+  {{ form.email.label }}<br>
+  {{ form.email(size=30) }}<br><br>
+  {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block title %}Inscripción{% endblock %}
+
+{% block content %}
+  <h2 class="mb-4">Cita de registro inscripcion</h2>
+
+  <form method="post">
+    {{ form.hidden_tag() }}
+
+    <div class="mb-3">
+      {{ form.nombre.label(class="form-label") }}
+      {{ form.nombre(class="form-control", placeholder="Tu nombre y apellidos") }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.curso.label(class="form-label") }}
+      {{ form.curso(class="form-select") }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.email.label(class="form-label") }}
+      {{ form.email(class="form-control", placeholder="usuario@dominio.com") }}
+    </div>
+
+    <div class="mb-3">
+      {{ form.telefono_contacto.label(class="form-label") }}
+      {{ form.telefono_contacto(class="form-control", placeholder="Ej. 5512345678") }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">{{ form.submit.label.text }}</button>
+  </form>
+{% endblock %}
